@@ -7,7 +7,7 @@ on:
       - master
   workflow_dispatch:
 
-# Permissions required to deploy to GitHub Pages and push branches
+# Permissions required to publish to GitHub Pages and push to the gh-pages branch
 permissions:
   contents: write
   pages: write
@@ -39,13 +39,8 @@ jobs:
           cp dist/index.html dist/404.html 2>/dev/null || true
           touch dist/.nojekyll
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: './dist'
-
-      # Backup: Also deploy to gh-pages branch in case branch-based Pages is used
-      - name: Deploy to gh-pages branch backup
+      # 1. Direct deployment to gh-pages branch (standard GitHub Pages source)
+      - name: Deploy to gh-pages branch
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
@@ -54,20 +49,21 @@ jobs:
           force_orphan: true
         continue-on-error: true
 
+      # 2. Upload artifact for GitHub Actions Pages deployment
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
+        continue-on-error: true
+
   deploy:
+    needs: build
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
     steps:
-      - name: Enable GitHub Pages via API if not yet activated
-        run: |
-          gh api -X POST /repos/${{ github.repository }}/pages -f build_type=workflow 2>/dev/null || gh api -X PUT /repos/${{ github.repository }}/pages -f build_type=workflow 2>/dev/null || true
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        continue-on-error: true
-
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        continue-on-error: true

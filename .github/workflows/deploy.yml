@@ -6,9 +6,9 @@ on:
       - main
   workflow_dispatch:
 
-# Permissions required to deploy to GitHub Pages
+# Permissions required to deploy to GitHub Pages and push to gh-pages branch
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -18,7 +18,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -28,29 +28,36 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: npm
 
       - name: Install dependencies
-        run: npm ci || npm install
+        run: npm install --legacy-peer-deps
 
       - name: Build application
-        run: npm run build
+        run: |
+          npm run build
+          cp dist/index.html dist/404.html 2>/dev/null || true
+          touch dist/.nojekyll
 
-      - name: Setup GitHub Pages
+      # 1. Automatic deployment to gh-pages branch (Default GitHub Pages source, zero configuration required)
+      - name: Deploy to gh-pages branch
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: gh-pages
+          force_orphan: true
+
+      # 2. Native Pages deployment (runs if repository has GitHub Actions selected as Pages source)
+      - name: Setup Pages
         uses: actions/configure-pages@v5
+        continue-on-error: true
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: './dist'
+        continue-on-error: true
 
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    needs: build
-    steps:
       - name: Deploy to GitHub Pages
-        id: deployment
         uses: actions/deploy-pages@v4
+        continue-on-error: true

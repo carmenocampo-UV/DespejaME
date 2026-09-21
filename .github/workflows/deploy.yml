@@ -4,9 +4,10 @@ on:
   push:
     branches:
       - main
+      - master
   workflow_dispatch:
 
-# Permissions required to deploy to GitHub Pages and push to gh-pages branch
+# Permissions required to deploy to GitHub Pages and push branches
 permissions:
   contents: write
   pages: write
@@ -18,7 +19,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -38,26 +39,35 @@ jobs:
           cp dist/index.html dist/404.html 2>/dev/null || true
           touch dist/.nojekyll
 
-      # 1. Automatic deployment to gh-pages branch (Default GitHub Pages source, zero configuration required)
-      - name: Deploy to gh-pages branch
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist'
+
+      # Backup: Also deploy to gh-pages branch in case branch-based Pages is used
+      - name: Deploy to gh-pages branch backup
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           publish_branch: gh-pages
           force_orphan: true
-
-      # 2. Native Pages deployment (runs if repository has GitHub Actions selected as Pages source)
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
         continue-on-error: true
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: './dist'
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Enable GitHub Pages via API if not yet activated
+        run: |
+          gh api -X POST /repos/${{ github.repository }}/pages -f build_type=workflow 2>/dev/null || gh api -X PUT /repos/${{ github.repository }}/pages -f build_type=workflow 2>/dev/null || true
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         continue-on-error: true
 
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v4
-        continue-on-error: true

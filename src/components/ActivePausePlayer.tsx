@@ -110,7 +110,7 @@ export const ActivePausePlayer: React.FC<ActivePausePlayerProps> = ({
         particleCount: 50,
         spread: 60,
         origin: { y: 0.6 },
-        colors: ['#0d9488', '#10b981', '#0284c7', '#38bdf8', '#f59e0b'],
+        colors: ['#1d4ed8', '#2563eb', '#0284c7', '#38bdf8', '#6366f1'],
       });
     } catch {
       // Confetti fallback
@@ -150,12 +150,12 @@ export const ActivePausePlayer: React.FC<ActivePausePlayerProps> = ({
         {/* Top bar */}
         <div className="px-5 py-3.5 bg-slate-50 border-b border-slate-100 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="w-2.5 h-2.5 rounded-full bg-teal-500 animate-pulse"></span>
-            <span className="text-xs font-bold uppercase tracking-wider text-teal-800">
+            <span className="w-2.5 h-2.5 rounded-full bg-blue-500 animate-pulse"></span>
+            <span className="text-xs font-bold uppercase tracking-wider text-blue-800">
               Pausa Activa de 60s
             </span>
             {participantMode === 'duo' ? (
-              <span className="flex items-center gap-1 text-[11px] font-semibold text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">
+              <span className="flex items-center gap-1 text-[11px] font-semibold text-sky-800 bg-sky-100 px-2 py-0.5 rounded-full">
                 <Users className="w-3 h-3" /> En Pareja
               </span>
             ) : (
@@ -172,7 +172,7 @@ export const ActivePausePlayer: React.FC<ActivePausePlayerProps> = ({
               className="p-1.5 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-200 transition-colors"
               title={localSound ? 'Silenciar campanadas' : 'Activar sonido'}
             >
-              {localSound ? <Volume2 className="w-4 h-4 text-teal-600" /> : <VolumeX className="w-4 h-4" />}
+              {localSound ? <Volume2 className="w-4 h-4 text-blue-600" /> : <VolumeX className="w-4 h-4" />}
             </button>
             <button
               id="player-close-btn"
@@ -191,10 +191,10 @@ export const ActivePausePlayer: React.FC<ActivePausePlayerProps> = ({
             <>
               {/* Exercise Title and Target */}
               <div className="mb-4">
-                <h2 className="text-xl font-bold text-slate-900 leading-tight">
+                <h2 className="text-xl font-bold text-slate-900 leading-tight font-heading">
                   {exercise.title}
                 </h2>
-                <p className="text-xs text-teal-700 font-medium mt-1">
+                <p className="text-xs text-blue-700 font-medium mt-1">
                   {exercise.targetRole}
                 </p>
               </div>
@@ -215,7 +215,7 @@ export const ActivePausePlayer: React.FC<ActivePausePlayerProps> = ({
                     cx="120"
                     cy="120"
                     r={radius}
-                    className="text-teal-600 stroke-current transition-all duration-1000 ease-linear"
+                    className="text-blue-600 stroke-current transition-all duration-1000 ease-linear"
                     strokeWidth="10"
                     strokeDasharray={circumference}
                     strokeDashoffset={strokeDashoffset}
@@ -244,12 +244,12 @@ export const ActivePausePlayer: React.FC<ActivePausePlayerProps> = ({
                       repeat: Infinity,
                       ease: 'easeInOut',
                     }}
-                    className="w-28 h-28 rounded-full bg-gradient-to-tr from-teal-100 to-emerald-100 border border-teal-200/60 flex flex-col items-center justify-center shadow-inner"
+                    className="w-28 h-28 rounded-full bg-gradient-to-tr from-blue-100 to-sky-100 border border-blue-200/60 flex flex-col items-center justify-center shadow-inner"
                   >
                     <span className="text-3xl font-bold font-mono text-slate-800 tracking-tight">
                       {secondsLeft}s
                     </span>
-                    <span className="text-[11px] font-semibold text-teal-800 uppercase tracking-wider mt-0.5">
+                    <span className="text-[11px] font-semibold text-blue-800 uppercase tracking-wider mt-0.5">
                       {currentStep?.visualCue === 'inhale'
                         ? 'Inhala'
                         : currentStep?.visualCue === 'exhale'
@@ -273,9 +273,9 @@ export const ActivePausePlayer: React.FC<ActivePausePlayerProps> = ({
                     key={idx}
                     className={`h-1.5 rounded-full transition-all duration-300 ${
                       idx === currentStepIndex
-                        ? 'w-8 bg-teal-600'
+                        ? 'w-8 bg-blue-600'
                         : idx < currentStepIndex
-                        ? 'w-4 bg-teal-300'
+                        ? 'w-4 bg-blue-300'
                         : 'w-4 bg-slate-200'
                     }`}
                   />
@@ -283,8 +283,8 @@ export const ActivePausePlayer: React.FC<ActivePausePlayerProps> = ({
               </div>
 
               {/* Current Step Instructions */}
-              <div className="w-full bg-teal-50/70 border border-teal-100 rounded-2xl p-4 min-h-[96px] flex flex-col justify-center mb-2">
-                <span className="text-[11px] font-bold text-teal-900 uppercase tracking-wider mb-1 block">
+              <div className="w-full bg-blue-50/80 border border-blue-100 rounded-2xl p-4 min-h-[96px] flex flex-col justify-center mb-2">
+                <span className="text-[11px] font-bold text-blue-900 uppercase tracking-wider mb-1 block">
                   Paso {currentStepIndex + 1} de {exercise.steps.length}: {currentStep?.title}
                 </span>
                 <p className="text-sm font-medium text-slate-800 leading-relaxed">
@@ -294,8 +294,8 @@ export const ActivePausePlayer: React.FC<ActivePausePlayerProps> = ({
 
               {/* Partner note if in duo mode */}
               {participantMode === 'duo' && exercise.teamNote && (
-                <div className="text-xs text-emerald-800 bg-emerald-50 border border-emerald-200 rounded-xl px-3 py-1.5 mb-2 flex items-center gap-1.5">
-                  <Users className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                <div className="text-xs text-sky-900 bg-sky-50 border border-sky-200 rounded-xl px-3 py-1.5 mb-2 flex items-center gap-1.5">
+                  <Users className="w-3.5 h-3.5 text-sky-600 shrink-0" />
                   <span>{exercise.teamNote}</span>
                 </div>
               )}
@@ -317,7 +317,7 @@ export const ActivePausePlayer: React.FC<ActivePausePlayerProps> = ({
                   className={`px-6 py-3 rounded-full font-bold text-sm flex items-center gap-2 shadow-md transition-transform active:scale-95 ${
                     isRunning
                       ? 'bg-slate-800 text-white hover:bg-slate-900'
-                      : 'bg-teal-600 text-white hover:bg-teal-700 shadow-teal-600/30'
+                      : 'bg-blue-600 text-white hover:bg-blue-700 shadow-blue-600/30'
                   }`}
                 >
                   {isRunning ? (
@@ -336,7 +336,7 @@ export const ActivePausePlayer: React.FC<ActivePausePlayerProps> = ({
                 <button
                   id="player-switch-btn"
                   onClick={onSwitchExercise}
-                  className="p-3 rounded-full text-slate-500 hover:text-teal-700 hover:bg-teal-50 transition-colors border border-slate-200"
+                  className="p-3 rounded-full text-slate-500 hover:text-blue-700 hover:bg-blue-50 transition-colors border border-slate-200"
                   title="Cambiar ejercicio"
                 >
                   <ChevronRight className="w-4 h-4" />
@@ -350,11 +350,11 @@ export const ActivePausePlayer: React.FC<ActivePausePlayerProps> = ({
               animate={{ scale: 1, opacity: 1 }}
               className="py-4 flex flex-col items-center"
             >
-              <div className="w-16 h-16 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mb-3 shadow-inner">
+              <div className="w-16 h-16 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center mb-3 shadow-inner">
                 <CheckCircle2 className="w-10 h-10" />
               </div>
 
-              <h2 className="text-2xl font-bold text-slate-900">
+              <h2 className="text-2xl font-bold text-slate-900 font-heading">
                 ¡60 segundos completados!
               </h2>
               <p className="text-xs text-slate-500 mt-1 max-w-xs">
@@ -378,8 +378,8 @@ export const ActivePausePlayer: React.FC<ActivePausePlayerProps> = ({
                       onClick={() => setSelectedMood(m.id)}
                       className={`flex flex-col items-center py-2 px-1 rounded-xl text-xs transition-all ${
                         selectedMood === m.id
-                          ? 'bg-teal-600 text-white font-bold shadow-sm'
-                          : 'bg-white text-slate-700 border border-slate-200 hover:border-teal-300'
+                          ? 'bg-blue-600 text-white font-bold shadow-sm'
+                          : 'bg-white text-slate-700 border border-slate-200 hover:border-blue-300'
                       }`}
                     >
                       <span className="text-lg">{m.emoji}</span>
@@ -390,8 +390,8 @@ export const ActivePausePlayer: React.FC<ActivePausePlayerProps> = ({
               </div>
 
               {/* Clinical encouragement note */}
-              <div className="bg-teal-50 border border-teal-200 rounded-xl p-3 text-xs text-teal-900 text-left flex items-start gap-2 mb-4">
-                <Sparkles className="w-4 h-4 text-teal-600 shrink-0 mt-0.5" />
+              <div className="bg-blue-50 border border-blue-200 rounded-xl p-3 text-xs text-blue-900 text-left flex items-start gap-2 mb-4">
+                <Sparkles className="w-4 h-4 text-blue-600 shrink-0 mt-0.5" />
                 <p>
                   <strong>Beneficio clínico obtenido:</strong> {exercise.clinicalBenefit}
                 </p>
@@ -402,7 +402,7 @@ export const ActivePausePlayer: React.FC<ActivePausePlayerProps> = ({
                 <button
                   id="player-save-exit-btn"
                   onClick={handleSaveAndExit}
-                  className="flex-1 py-3 px-4 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-sm flex items-center justify-center gap-1.5 shadow-md shadow-teal-600/20 active:scale-[0.98] transition-all"
+                  className="flex-1 py-3 px-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm flex items-center justify-center gap-1.5 shadow-md shadow-blue-600/25 active:scale-[0.98] transition-all"
                 >
                   <span>Volver al turno</span>
                   <ArrowRight className="w-4 h-4" />
@@ -423,7 +423,7 @@ export const ActivePausePlayer: React.FC<ActivePausePlayerProps> = ({
         {/* Bottom micro-footer */}
         <div className="px-5 py-2.5 bg-slate-50/70 border-t border-slate-100 text-[11px] text-slate-500 flex items-center justify-between">
           <span>Espacio: {exercise.space === 'cero_espacio' ? 'Cero espacio (en el sitio)' : exercise.space === 'sentado' ? 'Sentado(a)' : 'De pie'}</span>
-          <span className="text-teal-700 font-semibold">{exercise.category.replace('_', ' ').toUpperCase()}</span>
+          <span className="text-blue-700 font-semibold">{exercise.category.replace('_', ' ').toUpperCase()}</span>
         </div>
       </div>
     </div>

@@ -47,11 +47,11 @@ export const ShiftSummaryModal: React.FC<ShiftSummaryModalProps> = ({
         {/* Header */}
         <div className="px-6 py-4 bg-slate-50 border-b border-slate-100 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center">
               <BarChart3 className="w-4 h-4" />
             </div>
             <div>
-              <h3 className="font-bold text-base text-slate-900">
+              <h3 className="font-bold text-base text-slate-900 font-heading">
                 Tu Autocuidado en Turno
               </h3>
               <p className="text-xs text-slate-500">
@@ -72,11 +72,11 @@ export const ShiftSummaryModal: React.FC<ShiftSummaryModalProps> = ({
         <div className="p-6 space-y-6 max-h-[75vh] overflow-y-auto">
           {/* Key Metrics Grid */}
           <div className="grid grid-cols-3 gap-3 text-center">
-            <div className="p-3.5 rounded-2xl bg-teal-50 border border-teal-100">
-              <span className="text-2xl font-black text-teal-900 block font-heading">
+            <div className="p-3.5 rounded-2xl bg-blue-50 border border-blue-100">
+              <span className="text-2xl font-black text-blue-900 block font-heading">
                 {stats.todaySessionsCount}
               </span>
-              <span className="text-[11px] font-semibold text-teal-700 uppercase tracking-wider block mt-0.5">
+              <span className="text-[11px] font-semibold text-blue-700 uppercase tracking-wider block mt-0.5">
                 Pausas Hoy
               </span>
             </div>
@@ -117,7 +117,7 @@ export const ShiftSummaryModal: React.FC<ShiftSummaryModalProps> = ({
                     <span className="text-xs font-medium text-slate-700 truncate">
                       {cat.name}
                     </span>
-                    <span className="text-xs font-bold text-teal-700 bg-teal-100 px-2 py-0.5 rounded-full">
+                    <span className="text-xs font-bold text-blue-700 bg-blue-100 px-2 py-0.5 rounded-full">
                       {count}
                     </span>
                   </div>
@@ -143,7 +143,7 @@ export const ShiftSummaryModal: React.FC<ShiftSummaryModalProps> = ({
                     className="p-2.5 rounded-xl border border-slate-200 bg-white flex items-center justify-between text-xs"
                   >
                     <div className="flex items-center gap-2">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-teal-600 shrink-0" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-blue-600 shrink-0" />
                       <div>
                         <span className="font-semibold text-slate-800 block">
                           {session.exerciseTitle}
@@ -173,7 +173,7 @@ export const ShiftSummaryModal: React.FC<ShiftSummaryModalProps> = ({
           {/* Clinical Ergonomic Tips */}
           <div>
             <h4 className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-2.5 flex items-center gap-1.5">
-              <BookOpen className="w-3.5 h-3.5 text-teal-600" />
+              <BookOpen className="w-3.5 h-3.5 text-blue-600" />
               <span>Píldoras Ergonómicas Hospitalarias</span>
             </h4>
 
@@ -203,7 +203,7 @@ export const ShiftSummaryModal: React.FC<ShiftSummaryModalProps> = ({
               onClose();
               onStartPause();
             }}
-            className="px-4 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-sm transition-colors"
+            className="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-sm transition-colors"
           >
             Hacer Pausa de 60s Ahora
           </button>

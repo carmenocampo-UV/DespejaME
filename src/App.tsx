@@ -146,11 +146,11 @@ export default function App() {
       {/* Main Container */}
       <main className="flex-1 max-w-4xl w-full mx-auto px-4 py-6 sm:py-8 space-y-6">
         {/* Quick Shift Badge */}
-        <div className="flex items-center justify-between text-xs text-slate-500 bg-teal-50/60 border border-teal-100/80 rounded-xl px-3.5 py-2">
+        <div className="flex items-center justify-between text-xs text-slate-500 bg-blue-50/70 border border-blue-100/80 rounded-xl px-3.5 py-2">
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-teal-600"></span>
+            <span className="w-2 h-2 rounded-full bg-blue-600"></span>
             <span>
-              Turno: <strong className="text-teal-900 capitalize">{shiftConfig.shiftType.replace('_', ' ')}</strong>
+              Turno: <strong className="text-blue-900 capitalize">{shiftConfig.shiftType.replace('_', ' ')}</strong>
             </span>
             <span className="hidden sm:inline text-slate-400">•</span>
             <span className="hidden sm:inline">
@@ -160,7 +160,7 @@ export default function App() {
 
           <button
             onClick={() => setIsNotifModalOpen(true)}
-            className="text-teal-700 font-semibold hover:underline"
+            className="text-blue-700 font-semibold hover:underline"
           >
             Ajustar turno
           </button>

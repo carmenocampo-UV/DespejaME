@@ -81,11 +81,11 @@ export const NotificationSettingsModal: React.FC<NotificationSettingsModalProps>
         {/* Modal Header */}
         <div className="px-6 py-4 bg-slate-50 border-b border-slate-100 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center">
               <Bell className="w-4 h-4" />
             </div>
             <div>
-              <h3 className="font-bold text-base text-slate-900">
+              <h3 className="font-bold text-base text-slate-900 font-heading">
                 Notificaciones de Turno
               </h3>
               <p className="text-xs text-slate-500">
@@ -129,7 +129,7 @@ export const NotificationSettingsModal: React.FC<NotificationSettingsModalProps>
               <button
                 id="btn-request-notif-permission"
                 onClick={handleRequestPermission}
-                className="px-3 py-1.5 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs whitespace-nowrap shadow-sm"
+                className="px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs whitespace-nowrap shadow-sm"
               >
                 Habilitar Alertas
               </button>
@@ -137,12 +137,12 @@ export const NotificationSettingsModal: React.FC<NotificationSettingsModalProps>
           </div>
 
           {/* Master Enable Switch */}
-          <div className="flex items-center justify-between p-3.5 rounded-2xl bg-teal-50/70 border border-teal-100">
+          <div className="flex items-center justify-between p-3.5 rounded-2xl bg-blue-50/80 border border-blue-100">
             <div>
-              <span className="text-sm font-bold text-teal-950 block">
+              <span className="text-sm font-bold text-blue-950 block">
                 Recordatorios Periódicos de Pausa Activa
               </span>
-              <span className="text-xs text-teal-800">
+              <span className="text-xs text-blue-800">
                 Te enviará un aviso cada intervalo seleccionado durante el turno
               </span>
             </div>
@@ -154,7 +154,7 @@ export const NotificationSettingsModal: React.FC<NotificationSettingsModalProps>
                 onChange={(e) => setLocalConfig({ ...localConfig, enabled: e.target.checked })}
                 className="sr-only peer"
               />
-              <div className="w-11 h-6 bg-slate-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-teal-600"></div>
+              <div className="w-11 h-6 bg-slate-300 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-blue-600"></div>
             </label>
           </div>
 
@@ -176,12 +176,12 @@ export const NotificationSettingsModal: React.FC<NotificationSettingsModalProps>
                   onClick={() => setLocalConfig({ ...localConfig, shiftType: shift.id as typeof localConfig.shiftType })}
                   className={`p-2.5 rounded-xl text-left border transition-all ${
                     localConfig.shiftType === shift.id
-                      ? 'bg-teal-600 text-white border-teal-700 shadow-sm'
-                      : 'bg-white text-slate-700 border-slate-200 hover:border-teal-300'
+                      ? 'bg-blue-600 text-white border-blue-700 shadow-sm'
+                      : 'bg-white text-slate-700 border-slate-200 hover:border-blue-300'
                   }`}
                 >
                   <span className="text-xs font-bold block">{shift.label}</span>
-                  <span className={`text-[10px] block mt-0.5 ${localConfig.shiftType === shift.id ? 'text-teal-100' : 'text-slate-500'}`}>
+                  <span className={`text-[10px] block mt-0.5 ${localConfig.shiftType === shift.id ? 'text-blue-100' : 'text-slate-500'}`}>
                     {shift.hours}
                   </span>
                 </button>
@@ -213,7 +213,7 @@ export const NotificationSettingsModal: React.FC<NotificationSettingsModalProps>
                 >
                   <span className="text-xs block">{item.label}</span>
                   {item.rec && (
-                    <span className="text-[9px] text-teal-400 block font-normal">Sugerido</span>
+                    <span className="text-[9px] text-blue-500 block font-normal">Sugerido</span>
                   )}
                 </button>
               ))}
@@ -227,7 +227,7 @@ export const NotificationSettingsModal: React.FC<NotificationSettingsModalProps>
           <div className="grid grid-cols-2 gap-3 pt-2">
             <div className="flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-slate-50">
               <div className="flex items-center gap-2">
-                <Volume2 className="w-4 h-4 text-teal-600" />
+                <Volume2 className="w-4 h-4 text-blue-600" />
                 <div>
                   <span className="text-xs font-semibold text-slate-800 block">Campana suave</span>
                   <span className="text-[10px] text-slate-500">Sonido de cuenco</span>
@@ -237,13 +237,13 @@ export const NotificationSettingsModal: React.FC<NotificationSettingsModalProps>
                 type="checkbox"
                 checked={localConfig.soundEnabled}
                 onChange={(e) => setLocalConfig({ ...localConfig, soundEnabled: e.target.checked })}
-                className="accent-teal-600 w-4 h-4 rounded cursor-pointer"
+                className="accent-blue-600 w-4 h-4 rounded cursor-pointer"
               />
             </div>
 
             <div className="flex items-center justify-between p-3 rounded-xl border border-slate-200 bg-slate-50">
               <div className="flex items-center gap-2">
-                <Smartphone className="w-4 h-4 text-teal-600" />
+                <Smartphone className="w-4 h-4 text-blue-600" />
                 <div>
                   <span className="text-xs font-semibold text-slate-800 block">Vibración</span>
                   <span className="text-[10px] text-slate-500">Pulso háptico</span>
@@ -253,7 +253,7 @@ export const NotificationSettingsModal: React.FC<NotificationSettingsModalProps>
                 type="checkbox"
                 checked={localConfig.vibrationEnabled}
                 onChange={(e) => setLocalConfig({ ...localConfig, vibrationEnabled: e.target.checked })}
-                className="accent-teal-600 w-4 h-4 rounded cursor-pointer"
+                className="accent-blue-600 w-4 h-4 rounded cursor-pointer"
               />
             </div>
           </div>
@@ -303,7 +303,7 @@ export const NotificationSettingsModal: React.FC<NotificationSettingsModalProps>
             onClick={handleTestNotification}
             className="px-3 py-2 rounded-xl text-xs font-semibold text-slate-700 hover:bg-slate-200 border border-slate-200 transition-colors flex items-center gap-1.5"
           >
-            <Play className="w-3.5 h-3.5 fill-current text-teal-600" />
+            <Play className="w-3.5 h-3.5 fill-current text-blue-600" />
             <span>{testTriggered ? '¡Alerta enviada!' : 'Probar Notificación'}</span>
           </button>
 
@@ -317,7 +317,7 @@ export const NotificationSettingsModal: React.FC<NotificationSettingsModalProps>
             <button
               id="notif-save-btn"
               onClick={handleSave}
-              className="px-5 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white font-bold text-xs shadow-md shadow-teal-600/20 transition-colors"
+              className="px-5 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-md shadow-blue-600/20 transition-colors"
             >
               Guardar Configuración
             </button>

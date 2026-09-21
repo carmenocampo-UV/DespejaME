@@ -26,15 +26,15 @@ export const Header: React.FC<HeaderProps> = ({
       <div className="max-w-4xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Brand */}
         <div className="flex items-center gap-2.5">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-teal-600 to-emerald-500 flex items-center justify-center text-white shadow-sm shadow-teal-500/20">
+          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-700 via-blue-600 to-sky-500 flex items-center justify-center text-white shadow-sm shadow-blue-500/25">
             <Activity className="w-5 h-5 stroke-[2.5]" />
           </div>
           <div>
             <div className="flex items-center gap-1.5">
               <span className="font-bold text-lg tracking-tight text-slate-900 font-heading">
-                Despeja<span className="text-teal-600">ME</span>
+                Despeja<span className="text-blue-600">ME</span>
               </span>
-              <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-teal-100 text-teal-800 border border-teal-200">
+              <span className="text-[10px] uppercase font-bold tracking-wider px-1.5 py-0.5 rounded bg-blue-100 text-blue-800 border border-blue-200">
                 60s Salud
               </span>
             </div>
@@ -72,7 +72,7 @@ export const Header: React.FC<HeaderProps> = ({
             aria-label="Alternar sonido"
           >
             {shiftConfig.soundEnabled ? (
-              <Volume2 className="w-4 h-4 text-teal-600" />
+              <Volume2 className="w-4 h-4 text-blue-600" />
             ) : (
               <VolumeX className="w-4 h-4 text-slate-400" />
             )}
@@ -88,8 +88,8 @@ export const Header: React.FC<HeaderProps> = ({
           >
             {shiftConfig.enabled && !isEmergencyMuted ? (
               <>
-                <Bell className="w-4 h-4 text-teal-600" />
-                <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-teal-500 ring-2 ring-white"></span>
+                <Bell className="w-4 h-4 text-blue-600" />
+                <span className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-blue-500 ring-2 ring-white"></span>
               </>
             ) : (
               <BellOff className="w-4 h-4 text-slate-400" />
@@ -101,11 +101,11 @@ export const Header: React.FC<HeaderProps> = ({
             id="header-stats-btn"
             onClick={onOpenStats}
             title="Ver progreso de pausas en tu turno"
-            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-teal-50 border border-teal-200/80 text-teal-900 text-xs font-semibold hover:bg-teal-100 transition-colors"
+            className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-blue-50 border border-blue-200/80 text-blue-900 text-xs font-semibold hover:bg-blue-100 transition-colors"
           >
-            <BarChart3 className="w-3.5 h-3.5 text-teal-600" />
+            <BarChart3 className="w-3.5 h-3.5 text-blue-600" />
             <span>{todayCount}</span>
-            <span className="hidden sm:inline text-teal-700 font-normal">pausas</span>
+            <span className="hidden sm:inline text-blue-700 font-normal">pausas</span>
           </button>
         </div>
       </div>

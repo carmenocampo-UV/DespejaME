@@ -1,0 +1,6 @@
+{
+  "name": "DespejaME",
+  "description": "Pausas activas de 60 segundos diseñadas para personal de salud durante turnos agotadores.",
+  "requestFramePermissions": ["notifications"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
